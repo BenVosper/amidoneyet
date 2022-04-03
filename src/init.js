@@ -41,6 +41,40 @@ const getInternalDayIndex = (dayIndex) => {
   return dayIndex;
 };
 
+const randomChoice = (array) => {
+  const i = Math.floor(Math.random() * array.length);
+  return array[i];
+};
+
+const getTermOfEndearment = () => {
+  return randomChoice([
+    "dude",
+    "bro",
+    "champ",
+    "buddy",
+    "pal",
+    "friendo",
+    "chief",
+    "you beautiful bastard",
+    "my lover",
+    "you joyous being",
+    "you burst of summer rain",
+    "you delightful maniac",
+    "you unhinged demon",
+    "you workaholic",
+    "{{ humourous term of endearment #34 }}",
+    "Jeff",
+    "legend",
+    "you delicious fruity snack",
+    "cutie pie",
+    "you bundle of joy",
+    "dreamboat",
+    "dream machine",
+    "wonderkid",
+    "you absolute unit",
+  ]);
+};
+
 const setTodoValue = (totalSeconds, secondsWorked) => {
   togo.innerHTML = `You're ${(secondsWorked / totalSeconds) * 100}% done`;
 };
@@ -81,19 +115,19 @@ const setResult = () => {
   }
 
   if (!workingDays.includes(dayIndex)) {
-    message.innerHTML = "You're not working today. Chill out a bit!";
+    message.innerHTML = "You're not working today. Chill out a bit...";
     setTodoValue(totalSeconds, totalSecondsWorkedThisWeek);
     return;
   }
 
   if (secondsWorkedToday >= 0) {
-    message.innerHTML = "Keep going....";
+    message.innerHTML = `Keep going ${getTermOfEndearment()}...`;
     setTodoValue(totalSeconds, totalSecondsWorkedThisWeek);
   }
 
   const isLastDay = workingDays.indexOf(dayIndex) === workingDays.length - 1;
   if (isLastDay && secondsWorkedToday >= 0) {
-    message.innerHTML = "Last day! Hang in there babe";
+    message.innerHTML = `Last day! Hang in there ${getTermOfEndearment()}...`;
     setTodoValue(totalSeconds, totalSecondsWorkedThisWeek);
   }
 
