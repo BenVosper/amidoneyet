@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
+
+html {
+  height: 100%;
+  font-family: "Roboto Mono", monospace;
+  background: linear-gradient(
+    167deg,
+    rgba(34, 34, 47, 1) 0%,
+    rgba(28, 28, 32, 1) 100%
+  );
+  color: rgb(191, 191, 191);
+  background-attachment: fixed;
+}
+
+body {
+  width: calc(100% - 20px);
+  margin: 10px;
+  box-sizing: border-box;
+  min-height: calc(100vh - 20px);
+  position: relative;
+}
+
+a {
+  color: rgb(191, 191, 191);
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  filter: drop-shadow(20px 10px 20px rgb(0, 0, 0));
+  width: 80%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  gap: 5%
+}
+
+#main > h2 {
+  text-align: center;
+}
+
+select {
+  overflow-y: hidden;
+  scrollbar-width: none; /*For Firefox*/;
+  -ms-overflow-style: none;  /*For Internet Explorer 10+*/;
+}
+
+p {
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+p.note {
+  font-size: 10px;
+  color: rgb(100, 100, 100);
+}
+
+p.caption {
+  font-size: 12px;
+  color: rgb(100, 100, 100);
+  text-align: center;
+}
+
+ul {
+  line-height: 1.5em;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+#footer p.note {
+  text-align: center;
+}
+
+#daylabel {
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+span.day-button {
+  font-weight: bold;
+  padding: 0.5em;
+  border: 1px solid rgb(191, 191, 191);
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+span.day-button.selected {
+  background-color: rgb(100, 100, 100);
+}

@@ -1,0 +1,23 @@
+{
+  "name": "amidoneyet",
+  "version": "0.0.1",
+  "devDependencies": {
+    "http-server": "^14.1.0",
+    "prettier": "2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check-formatting": "npx prettier --check  src/* *.html",
+    "fix-formatting": "npx prettier -w src/* *.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenVosper/amidoneyet.git"
+  },
+  "author": "Ben Vosper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenVosper/amidoneyet/issues"
+  },
+  "homepage": "https://github.com/BenVosper/amidoneyet#readme"
+}
