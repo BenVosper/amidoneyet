@@ -79,7 +79,7 @@ const setTodoValue = (totalSeconds, secondsWorked) => {
   togo.innerHTML = `You're ${(secondsWorked / totalSeconds) * 100}% done`;
 };
 
-const setResult = () => {
+const setResult = (updateMessage = true) => {
   const secondsPerDay = getSecondsWorkedPerDay();
   const totalSeconds = getTotalWorkingSeconds();
 
@@ -109,25 +109,33 @@ const setResult = () => {
   }
 
   if (secondsWorkedToday === 0) {
-    message.innerHTML = "You don't have to start working yet!";
+    if (updateMessage) {
+      message.innerHTML = "You don't have to start working yet!";
+    }
     setTodoValue(totalSeconds, totalSecondsWorkedThisWeek);
     return;
   }
 
   if (!workingDays.includes(dayIndex)) {
-    message.innerHTML = "You're not working today. Chill out a bit...";
+    if (updateMessage) {
+      message.innerHTML = "You're not working today. Chill out a bit...";
+    }
     setTodoValue(totalSeconds, totalSecondsWorkedThisWeek);
     return;
   }
 
   if (secondsWorkedToday >= 0) {
-    message.innerHTML = `Keep going ${getTermOfEndearment()}...`;
+    if (updateMessage) {
+      message.innerHTML = `Keep going ${getTermOfEndearment()}...`;
+    }
     setTodoValue(totalSeconds, totalSecondsWorkedThisWeek);
   }
 
   const isLastDay = workingDays.indexOf(dayIndex) === workingDays.length - 1;
   if (isLastDay && secondsWorkedToday >= 0) {
-    message.innerHTML = `Last day! Hang in there ${getTermOfEndearment()}...`;
+    if (updateMessage) {
+      message.innerHTML = `Last day! Hang in there ${getTermOfEndearment()}...`;
+    }
     setTodoValue(totalSeconds, totalSecondsWorkedThisWeek);
   }
 
@@ -163,3 +171,4 @@ dayButtons.forEach((element) => {
 });
 
 setResult();
+setInterval(() => setResult(false), 1000);
