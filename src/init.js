@@ -76,7 +76,8 @@ const getTermOfEndearment = () => {
 };
 
 const setTodoValue = (totalSeconds, secondsWorked) => {
-  togo.innerHTML = `You're ${(secondsWorked / totalSeconds) * 100}% done`;
+  const percentage = (secondsWorked / totalSeconds) * 100;
+  togo.innerHTML = `You're ${percentage.toFixed(4)}% done`;
 };
 
 const setResult = (updateMessage = true) => {
