@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap");
 
 html {
   height: 100%;
@@ -49,7 +50,7 @@ img {
   position: absolute;
   top: 0%;
   right: 0%;
-  gap: 5%
+  gap: 3em;
 }
 
 #main > h2 {
@@ -99,7 +100,7 @@ ul {
 }
 
 span.day-button {
-  font-weight: bold;
+  font-weight: 800;
   padding: 0.5em;
   border: 1px solid rgb(191, 191, 191);
   border-radius: 0.5em;
@@ -108,4 +109,12 @@ span.day-button {
 
 span.day-button.selected {
   background-color: rgb(100, 100, 100);
+}
+
+#result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
 }

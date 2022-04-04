@@ -1,7 +1,9 @@
 const message = document.getElementById("message");
 message.innerHTML = "";
 
-const togo = document.getElementById("togo");
+const togo1 = document.getElementById("togo1");
+const togo2 = document.getElementById("togo2");
+const togo3 = document.getElementById("togo3");
 const startTime = document.getElementById("start");
 const endTime = document.getElementById("end");
 
@@ -75,9 +77,56 @@ const getTermOfEndearment = () => {
   ]);
 };
 
+const pluralise = (string, value) => {
+  if (value === 1) {
+    return string;
+  }
+  return `${string}s`;
+};
+
 const setTodoValue = (totalSeconds, secondsWorked) => {
   const percentage = (secondsWorked / totalSeconds) * 100;
-  togo.innerHTML = `You're ${percentage.toFixed(4)}% done`;
+  let secondsToGo = totalSeconds - secondsWorked;
+
+  const workedH = Math.floor(secondsWorked / 3600);
+  secondsWorked %= 3600;
+  const workedM = Math.floor(secondsWorked / 60);
+  const workedS = secondsWorked % 60;
+
+  const remainingH = Math.floor(secondsToGo / 3600);
+  secondsToGo %= 3600;
+  const remainingM = Math.floor(secondsToGo / 60);
+  const remainingS = secondsToGo % 60;
+
+  togo1.innerHTML = `
+    You're <strong>${percentage.toFixed(4)}%</strong> done
+  `;
+
+  togo2.innerHTML = `
+    That's <strong>${workedH} ${pluralise(
+    "hour",
+    workedH
+  )} ${workedM} ${pluralise("minute", workedM)} and ${workedS} ${pluralise(
+    "second",
+    workedS
+  )}</strong> worked
+  `;
+
+  togo3.innerHTML = `
+    <strong>${remainingH} ${pluralise(
+    "hour",
+    remainingH
+  )} ${remainingM} ${pluralise(
+    "minute",
+    remainingM
+  )} and ${remainingS} ${pluralise("second", remainingS)}</strong> to go
+  `;
+};
+
+const clearTogo = () => {
+  togo1.innerHTML = null;
+  togo2.innerHTML = null;
+  togo3.innerHTML = null;
 };
 
 const setResult = (updateMessage = true) => {
@@ -86,7 +135,7 @@ const setResult = (updateMessage = true) => {
 
   if (totalSeconds === 0) {
     message.innerHTML = "No work this week? Result.";
-    togo.innerHTML = null;
+    clearTogo();
     return;
   }
 
@@ -147,7 +196,8 @@ const setResult = (updateMessage = true) => {
 
   if (isLastDay && secondsWorkedToday === secondsPerDay) {
     message.innerHTML = "All done!";
-    togo.innerHTML = "Go home you massive legend";
+    clearTogo();
+    togo1.innerHTML = "Go home you massive legend";
   }
 };
 
