@@ -171,4 +171,6 @@ dayButtons.forEach((element) => {
 });
 
 setResult();
-setInterval(() => setResult(false), 1000);
+setInterval(() => {
+  !!startTime.value && !!endTime.value && setResult(false);
+}, 1000);
